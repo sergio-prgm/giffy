@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './App.css'
+import ListOfGifs from './components/ListOfGifs'
+
 
 function App() {
+  /*
+  useEffect(function () {
+     console.log('EFecto ejecutado')
+      setGifs(DIFF_GIFS)
+  }, [])
+//  Sin el [] (que sirve para asignarle dependencias, es decir, qué variables
+//  debe observar para ejecutar la función) se produciría un loop infinito.
+//  De esta manera no tiene dependencias y solo se ejecuta una vez se renderiza el componente
+*/
+const [keyword, setKeyword] = useState('meatball')
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="App-content" >
+        <button onClick={() => setKeyword('valley') }>Change Keyword</button>
+        <ListOfGifs keyword={keyword} />
+      </section>
     </div>
   );
 }
 
-export default App;
+export default App
+
+//  API_KEY = 'VFEJhtLSFk9qZdOXMUqoWYvAzsv8ZMVM'
