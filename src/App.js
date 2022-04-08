@@ -1,7 +1,7 @@
-import {Route, Link} from 'wouter'
+import { Route, Link } from 'wouter'
 import './App.css'
-import ListOfGifs from './components/ListOfGifs'
-
+import Home from './pages/Home'
+import SearchResults from './pages/SearchResults'
 
 function App() {
   /*
@@ -15,22 +15,20 @@ function App() {
 */
   return (
     <div className="App">
-      <section className="App-content" >
+      <section className="App-content">
         <Link href="/">
           <h1>App</h1>
         </Link>
-        <Link href='/gif/panda'>Panda</Link>
-        <Link href='/gif/valley'>Valley</Link>
-        <Link href='/gif/window'>Window</Link>
-        <Link href='/gif/meatball'>Meatball</Link>
-        <Route component={ListOfGifs} path='/gif/:keyword'/> 
+        <Route component={Home} path="/" />
+        <Route component={SearchResults} path="/search/:keyword" />
         {/* <ListOfGifs keyword='office' /> */}
       </section>
     </div>
-  );
+  )
 }
 /*
   Usar <Link> en las rutas para que sea SPA ==> que use el historyPush API
+  Si usas <a> cada vez que viaja al enlace vuelve a cargar... => MAL
 */
 export default App
 
