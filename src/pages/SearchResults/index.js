@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import Gif from '../../components/Gif'
 import getGifs from '../../services/getGifs'
+import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
 
 export default function SearchResults({ params }) {
   const { keyword } = params
@@ -40,13 +40,7 @@ export default function SearchResults({ params }) {
   if (loading) return <i>🌽</i> //
   // todo lo marcado con // es lo necesario para hacer el loader rapidito
 
-  return (
-    <>
-      {gifs.map(({ title, url, id }) => (
-        <Gif key={id} id={id} title={title} url={url} />
-      ))}
-    </>
-  )
+  return <>{loading ? <i>��</i> : <ListOfGifs gifs={gifs} />}</>
 }
 
 /* Hace falta dar un key cuando se renderizan varios elementos iguales.
