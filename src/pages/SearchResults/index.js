@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
-import getGifs from '../../services/getGifs'
 import ListOfGifs from '../../components/ListOfGifs/ListOfGifs'
+import useGifs from '../../hooks/useGifs'
 
 export default function SearchResults({ params }) {
   const { keyword } = params
+  const { loading, gifs } = useGifs({ keyword })
+  /* Esto es el equivalente al Hook
   const [loading, setLoading] = useState(false) //
   const [gifs, setGifs] = useState([])
 
@@ -14,6 +15,7 @@ export default function SearchResults({ params }) {
       setLoading(false)
     }) //
   }, [keyword])
+  */
 
   /*
   Para solo tener un estado:
