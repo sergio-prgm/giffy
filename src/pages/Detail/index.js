@@ -1,5 +1,5 @@
-import Gif from '../../components/Gif'
-import useGlobalGifs from '../../hooks/useGlobalGifs'
+import Gif from 'components/Gif/Gif'
+import useGlobalGifs from 'hooks/useGlobalGifs'
 
 export default function Detail({ params }) {
   // El contenido de params es el id que es lo que se pasa en la ruta (/:id)
