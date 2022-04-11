@@ -1,19 +1,45 @@
-.gif {
-  width: 100%;
-  padding: 32px;
+.Gif {
+  --gifShadow-size: var(--gridList-gap, 6px);
+  margin-bottom: 0.5em;
+  position: relative;
+}
+
+.Gif-link {
+  color: #000;
+  display: block;
   text-decoration: none;
+  position: relative;
+  width: 100%;
 }
 
-.gif h4 {
+.Gif h4 {
+  background: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  font-size: 12px;
+  color: #fff;
   margin: 0;
-  font-size: 1rem;
+  position: absolute;
 }
 
-.gif img {
-  object-fit: contain;
-  max-width: 300px;
+.Gif img {
+  width: 100%;
+  /*object-fit: contain; */
+  vertical-align: top;
 }
 
 i {
   font-size: 80px;
+}
+
+.Gif {
+  margin-bottom: 0;
+}
+
+.Gif,
+.Gif-link {
+  height: 100%;
+}
+.Gif-link img {
+  height: inherit;
+  object-fit: cover;
 }
