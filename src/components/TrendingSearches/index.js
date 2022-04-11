@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import getTrending from 'services/getTrendingService'
 import Category from 'components/Category/index'
 
@@ -14,18 +14,33 @@ function TrendingSearches() {
 
 export default function LazyTrending() {
   const [show, setShow] = useState(false)
+  const elementRef = useRef()
+  //  Similar al state pero cuando cambia su contenido no vuelve a renderizar el componente
 
   useEffect(function () {
-    const onChange = (entries) => {
+    let observer
+    const onChange = (entries, observer) => {
       const el = entries[0]
       if (el.isIntersecting) {
         setShow(true)
+        observer.disconnect()
+        //  Stops the observer so that it doesn't execute every time the user scrolls
       }
     }
-    const observer = new IntersectionObserver(onChange, {
-      rootMargin: '100px'
+
+    Promise.resolve(
+      // Add polyfill in case the browser doesn't support intersectionObserver
+      typeof IntersectionObserver !== 'undefined'
+        ? IntersectionObserver
+        : import('intersection-observer')
+    ).then(() => {
+      const observer = new IntersectionObserver(onChange, {
+        rootMargin: '100px'
+      })
+      observer.observe(elementRef.current)
     })
-    observer.observe(document.getElementById('LazyTrending'))
+
+    return () => observer && observer.disconnect() //  cleans the event when the component is no longet in use
   })
-  return <div id="LazyTrending">{show ? <TrendingSearches /> : null}</div>
+  return <div ref={elementRef}>{show ? <TrendingSearches /> : null}</div>
 }
