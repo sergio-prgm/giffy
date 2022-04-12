@@ -1,10 +1,8 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'wouter'
+import { useLocation } from 'wouter'
 import ListOfGifs from 'components/ListOfGifs/ListOfGifs'
 import TrendingSearches from 'components/TrendingSearches'
 import useGifs from 'hooks/useGifs'
-
-const POPULAR_GIFS = ['Panda', 'Valley', 'Window', 'Meatball']
 
 export default function Home() {
   const [keyword, setKeyword] = useState('')
@@ -24,6 +22,7 @@ export default function Home() {
   return (
     <>
       <form onSubmit={handleSubmit}>
+        <button>Search</button>
         <input
           onChange={handleChange}
           type="text"
@@ -31,9 +30,13 @@ export default function Home() {
           placeholder="search your gif..."
         />
       </form>
-      <ListOfGifs gifs={gifs} />
-      <h3 className="App-title">Los gifs más populares</h3>
-      <TrendingSearches />
+      <div className="App-main">
+        <div className="App-results">
+          <h3 className="App-title">Última búsqueda</h3>
+          <ListOfGifs gifs={gifs} />
+        </div>
+        <TrendingSearches />
+      </div>
     </>
   )
 }

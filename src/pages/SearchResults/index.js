@@ -11,21 +11,19 @@ export default function SearchResults({ params }) {
   const externalRef = useRef()
   const { isNearScreen } = useNearScreen({
     externalRef: loading ? null : externalRef,
-    once: false
+    once: false,
+    distance: '70px'
   })
 
-  // const handleNextPage = () => setPage(prevPage => prevPage + 1)
-  // const handleNextPage = () => console.log('next page')
-
   const debounceHandleNextPage = useCallback(
-    debounce(() => setPage((prevPage) => prevPage + 1), 200),
+    debounce(() => setPage((prevPage) => prevPage + 1), 100),
     []
   )
   // useCallback sirve para no volver a crear funciones (similar a un useRef, pero con funciones)
   // asimismo necesita una referencia -como useEffect-, de lo contrario no funciona como debe
   useEffect(
     function () {
-      console.log(isNearScreen)
+      // console.log(isNearScreen)
       if (isNearScreen) debounceHandleNextPage()
     },
     [debounceHandleNextPage, isNearScreen]
