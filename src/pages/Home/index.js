@@ -1,35 +1,25 @@
-import { useState } from 'react'
 import { useLocation } from 'wouter'
+import { useCallback } from 'react'
 import ListOfGifs from 'components/ListOfGifs/ListOfGifs'
 import TrendingSearches from 'components/TrendingSearches'
 import useGifs from 'hooks/useGifs'
+import SearchForm from 'components/SearchForm'
 
 export default function Home() {
-  const [keyword, setKeyword] = useState('')
   const [path, pushLocation] = useLocation()
-
   const { loading, gifs } = useGifs()
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault()
-    pushLocation(`/search/${keyword}`)
-  }
-
-  const handleChange = (evt) => {
-    setKeyword(evt.target.value)
-  }
+  const handleSubmit = useCallback(
+    ({ keyword }) => {
+      pushLocation(`/search/${keyword}`)
+    },
+    [pushLocation]
+  )
+  // This function needs useCallback because, otherwise, it causes th SearchForm component to render everytime Home renders
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <button>Search</button>
-        <input
-          onChange={handleChange}
-          type="text"
-          value={keyword}
-          placeholder="search your gif..."
-        />
-      </form>
+      <SearchForm onSubmit={handleSubmit} />
       <div className="App-main">
         <div className="App-results">
           <h3 className="App-title">Última búsqueda</h3>
