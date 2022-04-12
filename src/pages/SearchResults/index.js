@@ -4,6 +4,7 @@ import useGifs from 'hooks/useGifs'
 import Spinner from 'components/Spinner'
 import useNearScreen from 'hooks/useNearScreen'
 import debounce from 'just-debounce-it'
+import useTitle from 'hooks/useSEO'
 
 export default function SearchResults({ params }) {
   const { keyword } = params
@@ -14,6 +15,14 @@ export default function SearchResults({ params }) {
     once: false,
     distance: '70px'
   })
+
+  const title = gifs
+    ? `${gifs.length} resultados de ${keyword}`
+    : //: loading
+      //? 'Cargando...'
+      ''
+
+  useTitle({ title })
 
   const debounceHandleNextPage = useCallback(
     debounce(() => setPage((prevPage) => prevPage + 1), 100),
