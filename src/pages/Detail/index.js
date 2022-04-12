@@ -1,14 +1,16 @@
 import Gif from 'components/Gif/Gif'
-import useGlobalGifs from 'hooks/useGlobalGifs'
+import Spinner from 'components/Spinner'
+import useSingleGif from 'hooks/useSingleGif'
+import { Redirect } from 'wouter'
 
 export default function Detail({ params }) {
   // El contenido de params es el id que es lo que se pasa en la ruta (/:id)
-  const gifs = useGlobalGifs()
+  const { gif, isLoading, isError } = useSingleGif({ id: params.id })
   // Aquí se podría usar directamente el Hook 'GetGifs' sin nececisdad del context
 
-  const gif = gifs.find((singleGif) => singleGif.id === params.id)
-
-  console.log(params)
+  if (isLoading) return <Spinner />
+  if (isError) return <Redirect to="/404" />
+  if (!gif) return null
 
   return <Gif {...gif} />
 }
