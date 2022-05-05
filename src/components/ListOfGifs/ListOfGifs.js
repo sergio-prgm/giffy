@@ -1,7 +1,7 @@
 import Gif from 'components/Gif/Gif'
 import './styles.css'
 
-export default function ListOfGifs({ gifs }) {
+export default function ListOfGifs ({ gifs }) {
   return (
     <div className="ListOfGifs">
       {gifs.map(({ title, url, id }) => (

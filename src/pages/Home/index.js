@@ -6,9 +6,10 @@ import useGifs from 'hooks/useGifs'
 import SearchForm from 'components/SearchForm'
 import { Helmet } from 'react-helmet'
 
-export default function Home() {
+export default function Home () {
   const [path, pushLocation] = useLocation()
-  const { loading, gifs } = useGifs()
+  const { loading, gifs } = useGifs();
+  
 
   const handleSubmit = useCallback(
     ({ keyword }) => {

@@ -7,7 +7,7 @@ import SearchResults from './pages/SearchResults'
 import StaticContext from './context/StaticContext'
 import { GifsContextProvider } from './context/GifsContext'
 
-function App() {
+function App () {
   /*
   useEffect(function () {
      console.log('EFecto ejecutado')

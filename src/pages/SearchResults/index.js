@@ -7,7 +7,7 @@ import debounce from 'just-debounce-it'
 import useTitle from 'hooks/useSEO'
 import { Helmet } from 'react-helmet'
 
-export default function SearchResults({ params }) {
+export default function SearchResults ({ params }) {
   const { keyword } = params
   const { loading, gifs, setPage } = useGifs({ keyword })
   const externalRef = useRef()
@@ -19,9 +19,9 @@ export default function SearchResults({ params }) {
 
   const title = gifs
     ? `${gifs.length} resultados de ${keyword}`
-    : //: loading
-      //? 'Cargando...'
-      ''
+    : // : loading
+  // ? 'Cargando...'
+    ''
 
   const debounceHandleNextPage = useCallback(
     debounce(() => setPage((prevPage) => prevPage + 1), 100),
@@ -39,9 +39,11 @@ export default function SearchResults({ params }) {
 
   return (
     <>
-      {loading ? (
+      {loading
+        ? (
         <Spinner />
-      ) : (
+          )
+        : (
         <>
           <Helmet>
             <title>{title}</title>
@@ -51,7 +53,7 @@ export default function SearchResults({ params }) {
           <ListOfGifs gifs={gifs} />
           <div id="visor" ref={externalRef}></div>
         </>
-      )}
+          )}
     </>
   )
 }

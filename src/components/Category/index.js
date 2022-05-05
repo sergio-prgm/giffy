@@ -1,6 +1,6 @@
 import { Link } from 'wouter'
 
-export default function Category({ categoryName, options }) {
+export default function Category ({ categoryName, options }) {
   return (
     <>
       <h2>{categoryName}</h2>

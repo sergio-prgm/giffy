@@ -1,6 +1,6 @@
 import './styles.css'
 
-export default function Spinner() {
+export default function Spinner () {
   return (
     <div className="lds-ring">
       <div></div>

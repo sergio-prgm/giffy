@@ -4,7 +4,7 @@ import Spinner from 'components/Spinner'
 
 const TrendingSearches = React.lazy(() => import('./TrendingSearches'))
 
-export default function LazyTrending() {
+export default function LazyTrending () {
   const { isNearScreen, fromRef } = useNearScreen({ distance: '200px' })
 
   return (

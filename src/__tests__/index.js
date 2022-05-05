@@ -28,7 +28,7 @@ The previous one is the more correct one
 
 test('home works as expected', async () => {
   const { container } = render(<App />)
-  const gifLink = await wait(() => container.querySelector('.Gif-link')) 
+  const gifLink = await wait(() => container.querySelector('.Gif-link'))
   expect(gifLink).toBeVisible()
 })
 */

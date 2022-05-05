@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import getTrending from 'services/getTrendingService'
 import Category from 'components/Category'
 
-export default function TrendingSearches() {
+export default function TrendingSearches () {
   const [trends, setTrends] = useState([])
 
   useEffect(function () {

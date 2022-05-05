@@ -13,12 +13,12 @@ const fromApiResponseToGifs = (apiResponse) => {
   return []
 }
 
-export default function getGifs({
+export default function getGifs ({
   keyword = 'lamp',
   limit = 5,
   page = 0
 } = {}) {
-  let apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
+  const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
     page * limit
   }&rating=g&lang=en`
   return fetch(apiUrl)

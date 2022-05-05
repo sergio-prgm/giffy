@@ -1,6 +1,6 @@
 import { useState, memo } from 'react'
 
-function SearchForm({ onSubmit }) {
+function SearchForm ({ onSubmit }) {
   const [keyword, setKeyword] = useState('')
 
   const handleSubmit = (evt) => {
