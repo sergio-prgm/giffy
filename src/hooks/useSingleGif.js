@@ -20,9 +20,10 @@ export default function useSingleGif ({ id }) {
             setIsLoading(false)
             setIsError(false)
           })
-          .catch((err) => {
+          .catch((error) => {
             setIsLoading(false)
-            setIsError(true)
+            setIsError(error)
+            // setIsError(true)
           })
       }
     },
