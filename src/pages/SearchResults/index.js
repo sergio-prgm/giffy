@@ -4,7 +4,7 @@ import useGifs from 'hooks/useGifs'
 import Spinner from 'components/Spinner'
 import useNearScreen from 'hooks/useNearScreen'
 import debounce from 'just-debounce-it'
-import useTitle from 'hooks/useSEO'
+// import useTitle from 'hooks/useSEO'
 import { Helmet } from 'react-helmet'
 
 export default function SearchResults ({ params }) {

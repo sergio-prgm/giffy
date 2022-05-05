@@ -7,8 +7,9 @@ import SearchForm from 'components/SearchForm'
 import { Helmet } from 'react-helmet'
 
 export default function Home () {
+  // eslint-disable-next-line no-unused-vars
   const [path, pushLocation] = useLocation()
-  const { loading, gifs } = useGifs();
+  const { gifs } = useGifs();
   
 
   const handleSubmit = useCallback(
