@@ -1,10 +1,14 @@
 import { useState, memo } from 'react'
+import { useLocation } from 'wouter'
 
 function SearchForm ({ onSubmit }) {
   const [keyword, setKeyword] = useState('')
+  // eslint-disable-next-line no-unused-vars
+  const [_, pushLocation] = useLocation()
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
+    pushLocation(`/search/${keyword}`)
     onSubmit({ keyword })
   }
 
