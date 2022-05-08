@@ -1,13 +1,13 @@
-import { Route, Link } from 'wouter'
-import './App.css'
-import Detail from './pages/Detail'
-import Home from './pages/Home'
-import SearchResults from './pages/SearchResults'
+import { Route, Link } from "wouter"
+import "./App.css"
+import Detail from "./pages/Detail"
+import Home from "./pages/Home"
+import SearchResults from "./pages/SearchResults"
 
-import StaticContext from './context/StaticContext'
-import { GifsContextProvider } from './context/GifsContext'
+import StaticContext from "./context/StaticContext"
+import { GifsContextProvider } from "./context/GifsContext"
 
-function App () {
+function App() {
   /*
   useEffect(function () {
      console.log('EFecto ejecutado')
@@ -18,7 +18,7 @@ function App () {
 //  De esta manera no tiene dependencias y solo se ejecuta una vez se renderiza el componente
 */
   return (
-    <StaticContext.Provider value={{ name: 'yo', diAlgo: true }}>
+    <StaticContext.Provider value={{ name: "yo", diAlgo: true }}>
       <div className="App">
         <section className="App-content">
           <Link to="/">
@@ -26,7 +26,7 @@ function App () {
           </Link>
           <GifsContextProvider>
             <Route component={Home} path="/" />
-            <Route component={SearchResults} path="/search/:keyword" />
+            <Route component={SearchResults} path="/search/:keyword/:rating?" />
             <Route component={Detail} path="/gif/:id" />
             <Route component={() => <h1>404 Error</h1>} path="/404" />
             {/* <ListOfGifs keyword='office' /> */}

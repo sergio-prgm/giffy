@@ -1,19 +1,24 @@
 import { useState, memo } from 'react'
 import { useLocation } from 'wouter'
 
-function SearchForm ({ onSubmit }) {
-  const [keyword, setKeyword] = useState('')
-  // eslint-disable-next-line no-unused-vars
-  const [_, pushLocation] = useLocation()
+const RATINGS = ['g', 'pg', 'pg-13', 'r']
+
+function SearchForm ({ initialKeyword = '', initialRating = '' }) {
+  const [keyword, setKeyword] = useState(decodeURIComponent(initialKeyword))
+  const [rating, setRating] = useState(initialRating)
+  const [, pushLocation] = useLocation()
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    pushLocation(`/search/${keyword}`)
-    onSubmit({ keyword })
+    pushLocation(`/search/${keyword}/${rating}`)
   }
 
   const handleChange = (evt) => {
     setKeyword(evt.target.value)
+  }
+
+  const handleChangeRating = (evt) => {
+    setRating(evt.target.value)
   }
 
   return (
@@ -25,6 +30,12 @@ function SearchForm ({ onSubmit }) {
         value={keyword}
         placeholder="search your gif..."
       />
+      <select onChange={handleChangeRating} value={rating}>
+        <option disabled>Rating type</option>
+        {RATINGS.map((rating) => (
+          <option key={rating}>{rating}</option>
+        ))}
+      </select>
     </form>
   )
 }

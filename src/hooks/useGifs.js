@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
-import getGifs from 'services/getGifs'
-import GifsContext from 'context/GifsContext'
+import { useContext, useEffect, useState } from "react"
+import getGifs from "services/getGifs"
+import GifsContext from "context/GifsContext"
 
 const INITIAL_PAGE = 0
 
-export default function useGifs ({ keyword } = { keyword: null }) {
+export default function useGifs({ keyword, rating } = { keyword: null }) {
   const [loading, setLoading] = useState(false) //
   const [loadingNextPage, setLoadingNextPage] = useState(false)
 
@@ -12,17 +12,17 @@ export default function useGifs ({ keyword } = { keyword: null }) {
   const { gifs, setGifs } = useContext(GifsContext)
   // Si no hay keyword recuperamos el último elemento d búsqueda y si no buscamos random
   const keywordToUse =
-    keyword || localStorage.getItem('lastKeyword') || 'random'
+    keyword || localStorage.getItem("lastKeyword") || "random"
 
   useEffect(() => {
     setLoading(true)
 
-    getGifs({ keyword: keywordToUse }).then((gifs) => {
+    getGifs({ keyword: keywordToUse, rating }).then((gifs) => {
       setGifs(gifs)
       setLoading(false)
-      localStorage.setItem('lastKeyword', keyword)
+      localStorage.setItem("lastKeyword", keyword)
     }) //
-  }, [keyword, setGifs, keywordToUse])
+  }, [keyword, setGifs, keywordToUse, rating])
 
   useEffect(
     function () {
@@ -30,12 +30,12 @@ export default function useGifs ({ keyword } = { keyword: null }) {
 
       setLoadingNextPage(true)
 
-      getGifs({ keyword: keywordToUse, page }).then((nextGifs) => {
+      getGifs({ keyword: keywordToUse, rating, page }).then((nextGifs) => {
         setGifs((prevGifs) => prevGifs.concat(nextGifs))
         setLoadingNextPage(false)
       })
     },
-    [page, keywordToUse, setGifs]
+    [page, keywordToUse, setGifs, rating]
   )
 
   return { loading, loadingNextPage, gifs, setPage }

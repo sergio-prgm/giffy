@@ -1,11 +1,11 @@
-import ListOfGifs from 'components/ListOfGifs/ListOfGifs'
-import TrendingSearches from 'components/TrendingSearches'
-import useGifs from 'hooks/useGifs'
-import SearchForm from 'components/SearchForm'
-import { Helmet } from 'react-helmet'
+import ListOfGifs from "components/ListOfGifs/ListOfGifs"
+import TrendingSearches from "components/TrendingSearches"
+import useGifs from "hooks/useGifs"
+import SearchForm from "components/SearchForm"
+import { Helmet } from "react-helmet"
 
-export default function Home () {
-  const { gifs } = useGifs();
+export default function Home() {
+  const { gifs } = useGifs()
 
   return (
     <>
