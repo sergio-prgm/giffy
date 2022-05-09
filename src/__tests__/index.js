@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { wait } from '@testing-library/user-event/dist/utils'
+import { test, expect } from '@testing-library/user-event/dist/utils'
 import App from '../App'
 
 test('search form could be used', async () => {

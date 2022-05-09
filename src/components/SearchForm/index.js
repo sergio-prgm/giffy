@@ -1,24 +1,48 @@
-import { useState, memo } from 'react'
+import { memo, useReducer } from 'react'
 import { useLocation } from 'wouter'
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
-function SearchForm ({ initialKeyword = '', initialRating = '' }) {
-  const [keyword, setKeyword] = useState(decodeURIComponent(initialKeyword))
-  const [rating, setRating] = useState(initialRating)
+const reducer = (state, action) => {
+  if (action.type === 'update_keyword') {
+    return {
+      ...state,
+      keyword: action.payload,
+      times: state.times + 1
+    }
+  } else if (action.type === 'update_rating') {
+    return {
+      ...state,
+      rating: action.payload
+    }
+  }
+  return state
+}
+
+function SearchForm ({ initialKeyword = '', initialRating = 'g' }) {
+  // const [rating, setRating] = useState(initialRating)
+
+  const [state, dispatch] = useReducer(reducer, {
+    keyword: decodeURIComponent(initialKeyword),
+    rating: initialRating,
+    times: 0
+  })
+
+  const { keyword, times, rating } = state
+
   const [, pushLocation] = useLocation()
+
+  const handleChange = (evt) => {
+    dispatch({ type: 'update_keyword', payload: evt.target.value })
+  }
+
+  const handleChangeRating = (evt) => {
+    dispatch({ type: 'update_rating', payload: evt.target.value })
+  }
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
     pushLocation(`/search/${keyword}/${rating}`)
-  }
-
-  const handleChange = (evt) => {
-    setKeyword(evt.target.value)
-  }
-
-  const handleChangeRating = (evt) => {
-    setRating(evt.target.value)
   }
 
   return (
@@ -36,6 +60,7 @@ function SearchForm ({ initialKeyword = '', initialRating = '' }) {
           <option key={rating}>{rating}</option>
         ))}
       </select>
+      <small>{times}</small>
     </form>
   )
 }

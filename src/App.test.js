@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, test, expect } from '@testing-library/react'
 import App from './App'
 
 test('renders without crashing', async () => {
