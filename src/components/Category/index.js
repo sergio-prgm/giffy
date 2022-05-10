@@ -1,16 +1,19 @@
-import { Link } from 'wouter'
+import { Link } from "wouter";
+import "./Category.css";
 
-export default function Category ({ categoryName, options }) {
+export default function Category({ name, options = [] }) {
   return (
-    <>
-      <h2>{categoryName}</h2>
-      <ul>
-        {options.map((popularGif) => (
-          <li key={popularGif}>
-            <Link to={`/search/${popularGif}`}>{popularGif}</Link>
+    <div className="Category">
+      <h3 className="Category-title">{name}</h3>
+      <ul className="Category-list">
+        {options.map((singleOption) => (
+          <li key={singleOption} className="Category-list-item">
+            <Link className="Category-link" to={`/search/${singleOption}`}>
+              {singleOption}
+            </Link>
           </li>
         ))}
       </ul>
-    </>
-  )
+    </div>
+  );
 }
