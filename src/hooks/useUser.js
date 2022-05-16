@@ -1,15 +1,24 @@
-import { useContext, useCallback } from 'react'
+import { useContext, useCallback, useState } from 'react'
 import Context from 'context/UserContext'
+import loginService from 'services/login'
 
 export default function useUser () {
   const { jwt, setJWT } = useContext(Context)
+  const [state, setState] = useState({ loading: false, error: false })
 
-  const login = useCallback(
-    ({ username, password }) => {
-      setJWT('test')
-    },
-    [setJWT]
-  )
+  const login = useCallback(({ username, password }) => {
+    setState({ loading: true, error: false })
+    loginService({ username, password })
+      .then(jwt => {
+        setState({ loading: false, error: false })
+        setJWT(jwt)
+      })
+      .catch(error => {
+        setState({ loading: false, error: true })
+        console.error(error)
+      })
+  },
+  [setJWT])
 
   const logout = useCallback(() => {
     setJWT(null)
@@ -17,6 +26,8 @@ export default function useUser () {
 
   return {
     isLogged: Boolean(jwt),
+    isLoginLoading: state.loading,
+    hasLoginError: state.error,
     login,
     logout
   }

@@ -13,15 +13,17 @@ export default function Header () {
   }
   return (
     <header className='gf-header'>
-      {isLogged
-        ? (
-          <Link href='#' onClick={handleClick}>
-            Logout
-          </Link>
-          )
-        : (
-          <Link to='/login'>Login</Link>
-          )}
+      {
+        isLogged
+          ? (
+            <Link href='#' onClick={handleClick}>
+              Logout
+            </Link>
+            )
+          : (
+            <Link to='/login'>Login</Link>
+            )
+      }
     </header>
   )
 }
