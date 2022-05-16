@@ -4,6 +4,13 @@
   position: relative;
 }
 
+.Gif-buttons {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 1;
+}
+
 .Gif-link {
   color: #000;
   display: block;
