@@ -20,7 +20,7 @@ export default function Detail ({ params }) {
       </>
     )
   }
-  if (isError) return <Redirect to="/404" />
+  if (isError) return <Redirect to='/404' />
   if (!gif) return null
 
   return (
@@ -28,7 +28,7 @@ export default function Detail ({ params }) {
       <Helmet>
         <title>{title} | Giffy</title>
       </Helmet>
-      <h3 className="App-title">{gif.title}</h3>
+      <h3 className='App-title'>{gif.title}</h3>
       <Gif {...gif} />
     </>
   )

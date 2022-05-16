@@ -1,19 +1,19 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { wait } from "@testing-library/user-event/dist/utils";
-import App from "../App";
+import { fireEvent, render, screen } from '@testing-library/react'
+import { wait } from '@testing-library/user-event/dist/utils'
+import App from '../App'
 
-test("search form could be used", async () => {
-  render(<App />);
+test('search form could be used', async () => {
+  render(<App />)
 
-  const input = await screen.findByRole("textbox");
-  const button = await screen.findByRole("button");
+  const input = await screen.findByRole('textbox')
+  const button = await screen.findByRole('button')
 
-  fireEvent.change(input, { target: { value: "Matrix" } });
-  fireEvent.click(button);
+  fireEvent.change(input, { target: { value: 'Matrix' } })
+  fireEvent.click(button)
 
-  const title = await screen.findByText("Matrix");
-  expect(title).toBeVisible();
-});
+  const title = await screen.findByText('Matrix')
+  expect(title).toBeVisible()
+})
 
 /*
 Alternatives for asynchronous components
