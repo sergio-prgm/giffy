@@ -1,11 +1,15 @@
 import { Route, Link } from 'wouter'
-import './App.css'
-import Detail from './pages/Detail'
-import Home from './pages/Home'
-import SearchResults from './pages/SearchResults'
+import 'App.css'
 
-import StaticContext from './context/StaticContext'
-import { GifsContextProvider } from './context/GifsContext'
+import { UserContextProvider } from 'context/UserContext'
+import { GifsContextProvider } from 'context/GifsContext'
+
+import Header from 'components/Header'
+
+import Detail from 'pages/Detail'
+import SearchResults from 'pages/SearchResults'
+import Home from 'pages/Home'
+import Login from 'pages/Login'
 
 function App () {
   /*
@@ -18,22 +22,23 @@ function App () {
 //  De esta manera no tiene dependencias y solo se ejecuta una vez se renderiza el componente
 */
   return (
-    <StaticContext.Provider value={{ name: 'yo', diAlgo: true }}>
-      <div className="App">
-        <section className="App-content">
-          <Link to="/">
+    <UserContextProvider>
+      <div className='App'>
+        <section className='App-content'>
+          <Header />
+          <Link to='/'>
             <h1>App</h1>
           </Link>
           <GifsContextProvider>
-            <Route component={Home} path="/" />
-            <Route component={SearchResults} path="/search/:keyword/:rating?" />
-            <Route component={Detail} path="/gif/:id" />
-            <Route component={() => <h1>404 Error</h1>} path="/404" />
-            {/* <ListOfGifs keyword='office' /> */}
+            <Route component={Home} path='/' />
+            <Route component={SearchResults} path='/search/:keyword/:rating?' />
+            <Route component={Detail} path='/gif/:id' />
+            <Route component={Login} path='/login' />
+            <Route component={() => <h1>404 Error</h1>} path='/404' />
           </GifsContextProvider>
         </section>
       </div>
-    </StaticContext.Provider>
+    </UserContextProvider>
   )
 }
 /*
