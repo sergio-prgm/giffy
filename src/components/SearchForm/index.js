@@ -13,7 +13,7 @@ export default function SearchForm ({
     initialKeyword
   })
 
-  const [_, pushLocation] = useLocation()
+  const [, pushLocation] = useLocation()
 
   const handleChange = (evt) => {
     updateKeyword(evt.target.value)
