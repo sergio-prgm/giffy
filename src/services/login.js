@@ -1,4 +1,4 @@
-const ENDPOINT = 'http://localhost:4000/api'
+const ENDPOINT = 'https://giffy-api.onrender.com/api'
 
 export default function login ({ username, password }) {
   return fetch(`${ENDPOINT}/login`, {
