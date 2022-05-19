@@ -1,7 +1,7 @@
-const ENDPOINT = 'https://giffy-api.onrender.com/api'
+import { API_URL } from './settings'
 
 export default function addFav ({ id, jwt }) {
-  return fetch(`${ENDPOINT}/favs/${id}`, {
+  return fetch(`${API_URL}/favs/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -1,7 +1,7 @@
-const ENDPOINT = 'https://giffy-api.onrender.com/api'
+import { API_URL } from './settings'
 
 export default function getFavs ({ jwt }) {
-  return fetch(`${ENDPOINT}/favs`, {
+  return fetch(`${API_URL}/favs`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -15,3 +15,7 @@ export default function getFavs ({ jwt }) {
     return favs
   })
 }
+
+// Fix:
+// first 'get' when login (no favs available)
+// cors error and failed to fetch (504)

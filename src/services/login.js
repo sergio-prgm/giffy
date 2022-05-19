@@ -1,7 +1,7 @@
-const ENDPOINT = 'https://giffy-api.onrender.com/api'
+import { API_URL } from './settings'
 
 export default function login ({ username, password }) {
-  return fetch(`${ENDPOINT}/login`, {
+  return fetch(`${API_URL}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

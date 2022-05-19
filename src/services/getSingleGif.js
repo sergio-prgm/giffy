@@ -1,4 +1,4 @@
-import { API_KEY, API_URL } from './settings'
+import { GIPHY_KEY, GIPHY_URL } from './settings'
 
 const fromApiResponseToGifs = (apiResponse) => {
   const { data } = apiResponse
@@ -8,7 +8,7 @@ const fromApiResponseToGifs = (apiResponse) => {
 }
 
 export default function getSingleGif ({ id }) {
-  return fetch(`${API_URL}/gifs/${id}?api_key=${API_KEY}`)
+  return fetch(`${GIPHY_URL}/gifs/${id}?api_key=${GIPHY_KEY}`)
     .then((res) => res.json())
     .then(fromApiResponseToGifs)
 }

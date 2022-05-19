@@ -1,4 +1,4 @@
-import { API_KEY, API_URL } from './settings'
+import { GIPHY_KEY, GIPHY_URL } from './settings'
 
 const fromApiResponseToGifs = (apiResponse) => {
   const { data = [] } = apiResponse
@@ -6,7 +6,7 @@ const fromApiResponseToGifs = (apiResponse) => {
 }
 
 export default function getTredingTerms () {
-  const apiUrl = `${API_URL}/trending/searches?api_key=${API_KEY}`
+  const apiUrl = `${GIPHY_URL}/trending/searches?api_key=${GIPHY_KEY}`
 
   return fetch(apiUrl)
     .then((res) => res.json())

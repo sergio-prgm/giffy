@@ -1,4 +1,4 @@
-import { API_KEY, API_URL } from './settings'
+import { GIPHY_KEY, GIPHY_URL } from './settings'
 
 const fromApiResponseToGifs = (apiResponse) => {
   const { data = [] } = apiResponse
@@ -19,7 +19,7 @@ export default function getGifs ({
   page = 0,
   rating = 'g'
 } = {}) {
-  const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
+  const apiUrl = `${GIPHY_URL}/gifs/search?api_key=${GIPHY_KEY}&q=${keyword}&limit=${limit}&offset=${
     page * limit
   }&rating=${rating}&lang=en`
 
