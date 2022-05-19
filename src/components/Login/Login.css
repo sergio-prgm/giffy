@@ -8,6 +8,13 @@
   font-size: 14px;
 }
 
+.form-errors {
+  color: red;
+  font-size: 12px;
+  margin-top: -8px;
+  display: block;
+}
+
 .form input {
   background-color: #fff;
   border: none;
@@ -17,13 +24,4 @@
   padding: 0.5rem 1rem;
   margin-bottom: 16px;
   margin-top: 4px
-}
-
-.btn {
-  width: 100%;
-  background: var(--brand-color_3);
-  border: 0;
-  color: #fff;
-  padding: 8px 16px;
-  font-size: 16px;
 }

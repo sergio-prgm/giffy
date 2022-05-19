@@ -1,6 +1,7 @@
 import './Modal.css'
+import ReactDOM from 'react-dom'
 
-export default function Modal ({ children, onClose }) {
+function Modal ({ children, onClose }) {
   return (
     <div className='modal'>
       <div className='modal-content'>
@@ -9,4 +10,12 @@ export default function Modal ({ children, onClose }) {
       </div>
     </div>
   )
+}
+
+export default function ModalPortal ({ children, onClose }) {
+  return ReactDOM.createPortal(
+    <Modal onClose={onClose}>
+      {children}
+    </Modal>,
+    document.getElementById('modal-root'))
 }
