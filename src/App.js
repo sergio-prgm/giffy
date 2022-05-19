@@ -10,6 +10,7 @@ import Detail from 'pages/Detail'
 import SearchResults from 'pages/SearchResults'
 import Home from 'pages/Home'
 import Login from 'pages/Login'
+import Register from 'pages/Register'
 
 function App () {
   /*
@@ -34,6 +35,7 @@ function App () {
             <Route component={SearchResults} path='/search/:keyword/:rating?' />
             <Route component={Detail} path='/gif/:id' />
             <Route component={Login} path='/login' />
+            <Route component={Register} path='/register' />
             <Route component={() => <h1>404 Error</h1>} path='/404' />
           </GifsContextProvider>
         </section>

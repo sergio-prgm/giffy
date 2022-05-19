@@ -19,9 +19,14 @@ export default function Header () {
       ? <Link href='#' onClick={handleClick}>
         Logout
       </Link>
-      : <Link to='/login'>
-        Login
-      </Link>
+      : <>
+        <Link to='/login'>
+          Login
+        </Link>
+        <Link to='/register'>
+          Register
+        </Link>
+      </>
   }
 
   const content = match
