@@ -8,7 +8,7 @@ export default function SearchForm ({
   initialKeyword = '',
   initialRating = RATINGS[0]
 }) {
-  const { keyword, times, rating, updateKeyword, updateRating } = useForm({
+  const { keyword, rating, updateKeyword, updateRating } = useForm({
     initialRating,
     initialKeyword
   })
@@ -50,7 +50,6 @@ export default function SearchForm ({
           <option key={rating}>{rating}</option>
         ))}
       </select>
-      <small>{times}</small>
     </form>
   )
 }

@@ -20,7 +20,7 @@ export default function getGifs ({
   rating = 'g'
 } = {}) {
   const apiUrl = `${GIPHY_URL}/gifs/search?api_key=${GIPHY_KEY}&q=${keyword}&limit=${limit}&offset=${
-    page * limit
+    page * limit + 1
   }&rating=${rating}&lang=en`
 
   return fetch(apiUrl)
