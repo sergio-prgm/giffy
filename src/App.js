@@ -7,10 +7,11 @@ import { GifsContextProvider } from 'context/GifsContext'
 import Header from 'components/Header'
 
 import Detail from 'pages/Detail'
-import SearchResults from 'pages/SearchResults'
+import ErrorPage from 'pages/ErrorPage'
 import Home from 'pages/Home'
 import Login from 'pages/Login'
 import Register from 'pages/Register'
+import SearchResults from 'pages/SearchResults'
 
 function App () {
   /*
@@ -36,7 +37,7 @@ function App () {
             <Route component={Detail} path='/gif/:id' />
             <Route component={Login} path='/login' />
             <Route component={Register} path='/register' />
-            <Route component={() => <h1>404 Error</h1>} path='/404' />
+            <Route component={ErrorPage} path='/:rest*' />
           </GifsContextProvider>
         </section>
       </div>
