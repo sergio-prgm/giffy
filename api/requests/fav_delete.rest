@@ -1,0 +1,6 @@
+DELETE http://localhost:4000/api/favs/123fafafrere
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlcmdpbzEiLCJpZCI6IjYyN2Y4ODg5OGY2ZjI3NjU2OTY0NTI2MyIsImlhdCI6MTY1Mjc3Nzg2MSwiZXhwIjoxNjUyOTUwNjYxfQ.m0W7BV9ytJ1MFZMh3f4z373nJVA1hhCA_9XeEW9jBLQ
+
+{
+}
