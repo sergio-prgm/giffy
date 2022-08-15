@@ -1,4 +1,4 @@
-import { Route, Link } from 'wouter'
+import { Route, Link, Switch } from 'wouter'
 import 'App.css'
 
 import { UserContextProvider } from 'context/UserContext'
@@ -32,12 +32,14 @@ function App () {
             <h1>App</h1>
           </Link>
           <GifsContextProvider>
-            <Route component={Home} path='/' />
-            <Route component={SearchResults} path='/search/:keyword/:rating?' />
-            <Route component={Detail} path='/gif/:id' />
-            <Route component={Login} path='/login' />
-            <Route component={Register} path='/register' />
-            <Route component={ErrorPage} path='/:rest*' />
+            <Switch>
+              <Route component={Home} path='/' />
+              <Route component={SearchResults} path='/search/:keyword/:rating?' />
+              <Route component={Detail} path='/gif/:id' />
+              <Route component={Login} path='/login' />
+              <Route component={Register} path='/register' />
+              <Route component={ErrorPage} path='/:rest' />
+            </Switch>
           </GifsContextProvider>
         </section>
       </div>
